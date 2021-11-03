@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bawp.freader.components.ReaderLogo
 import com.bawp.freader.navigation.ReaderScreens
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 
@@ -39,8 +40,12 @@ fun ReaderSplashScreen(navController: NavController) {
                                                     .getInterpolation(it)
                                             }))
         delay(2000L)
-        //Todo: check if there's a FB user, if so take them to Home Screen, otherwise, to LoginScreen
-        navController.navigate(ReaderScreens.LoginScreen.name)
+
+        if (FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()){
+            navController.navigate(ReaderScreens.LoginScreen.name)
+        }else {
+            navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+        }
 
 
     }

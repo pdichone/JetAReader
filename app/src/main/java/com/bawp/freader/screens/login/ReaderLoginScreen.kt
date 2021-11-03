@@ -38,10 +38,14 @@ import com.bawp.freader.R
 import com.bawp.freader.components.EmailInput
 import com.bawp.freader.components.PasswordInput
 import com.bawp.freader.components.ReaderLogo
+import com.bawp.freader.navigation.ReaderScreens
 
 @ExperimentalComposeUiApi
 @Composable
-fun ReaderLoginScreen(navController: NavController) {
+fun ReaderLoginScreen(
+    navController: NavController,
+    viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+                     ) {
     val showLoginForm = rememberSaveable { mutableStateOf(true) }
 
     Surface(modifier = Modifier.fillMaxSize()) {
@@ -49,11 +53,16 @@ fun ReaderLoginScreen(navController: NavController) {
           verticalArrangement = Arrangement.Top) {
           ReaderLogo()
           if (showLoginForm.value) UserForm(loading = false, isCreateAccount = false){ email, password ->
-              //Todo FB login
+              viewModel.signInWithEmailAndPassword(email, password){
+                  navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+
+              }
           }
           else {
               UserForm(loading = false, isCreateAccount = true){ email, password ->
-                    //Todo: create FB account
+                    viewModel.createUserWithEmailAndPassword(email, password) {
+                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                    }
               }
           }
 
