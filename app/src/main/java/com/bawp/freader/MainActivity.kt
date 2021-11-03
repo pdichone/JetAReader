@@ -18,36 +18,21 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.firestore.DocumentReference
 
 import com.google.android.gms.tasks.OnSuccessListener
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
-
-
-
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FReaderTheme {
 
-                val db = FirebaseFirestore.getInstance()
-                val user: MutableMap<String, Any> = HashMap()
-                user["firsName"] = "Jeo"
-                user["lastName"] = "James"
-
 
 
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
 
-                    db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener {
-                            Log.d("FB", "onCreate: ${it.id}")
-                        }.addOnFailureListener {
-                            Log.d("FB", "onCreate: $it")
-                        }
                     Greeting("Hello Today")
                 }
             }
