@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
             FReaderTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    Greeting("Hello World")
                 }
             }
         }
