@@ -67,6 +67,8 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0"
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
 
+    //material icons - use with caution!
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
