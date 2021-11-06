@@ -205,7 +205,7 @@ fun ListCard(book: MBook,
                         contentDescription = "Fav Icon",
                         modifier = Modifier.padding(bottom = 1.dp))
 
-                    BookRating(score = 3.5)
+                    BookRating(score = book.rating!!)
                 }
 
             }
