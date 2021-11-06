@@ -183,7 +183,7 @@ fun saveToFirebase(book: MBook, navController: NavController) {
 
 
     }else {
-        isBookEmpty.value = true
+
 
 
     }

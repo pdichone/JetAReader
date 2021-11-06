@@ -156,9 +156,9 @@ fun BookRating(score: Double = 4.5) {
 
 
 }
-@Preview
+
 @Composable
-fun ListCard(book: MBook = MBook("asdf", "Running", "Me and you", "hello world"),
+fun ListCard(book: MBook,
              onPressDetails: (String) -> Unit = {}) {
     val context = LocalContext.current
     val resources = context.resources
@@ -181,7 +181,7 @@ fun ListCard(book: MBook = MBook("asdf", "Running", "Me and you", "hello world")
             horizontalAlignment = Alignment.Start) {
             Row(horizontalArrangement = Arrangement.Center) {
 
-                Image(painter = rememberImagePainter(data = "http://books.google.com/books/content?id=JGH0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"),
+                Image(painter = rememberImagePainter(data = book.photoUrl.toString()),
                     contentDescription = "book image",
                     modifier = Modifier
                         .height(140.dp)
